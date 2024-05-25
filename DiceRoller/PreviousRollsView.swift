@@ -13,13 +13,15 @@ struct PreviousRollsView: View {
     @Query var rolls : [Dice]
     @Environment(\.modelContext) var modelContext
     
-     
+    var sortedRolls: [Dice] {
+            rolls.sorted(by: { $0.madeAt > $1.madeAt })
+        }
     
     
     var body: some View {
         NavigationStack{
             List{
-                ForEach(rolls){ roll in
+                ForEach(sortedRolls){ roll in
                     
                     VStack{
                         Text("Sides \(roll.sides)")
@@ -34,6 +36,9 @@ struct PreviousRollsView: View {
                 
                 
             }
+            .navigationTitle("Latest rolls")
+            
+        
             
             
             
