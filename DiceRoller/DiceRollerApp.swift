@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct DiceRollerApp: App {
@@ -13,5 +14,6 @@ struct DiceRollerApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: Dice.self)
     }
 }
